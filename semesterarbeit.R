@@ -41,7 +41,7 @@ g <- list(
   oceancolor = toRGB("white"),
   showcountries = TRUE,
   countrycolor = toRGB("darkgray"),
-  projection = list(type = 'Mercator')
+  projection = list(type = "Mercator")
 )
 
 fig <- plot_geo(kickstarter)
@@ -50,20 +50,20 @@ fig <- fig %>% add_trace(
   color = log10(country.freq),
   text = paste("Country: ", names(country.freq),
                "<br>Projects: ", country.freq),
-  locations = countrycode(names(country.freq), 'country.name', 'iso3c'),
-  marker = list(line = l, type = 'log')
+  locations = countrycode(names(country.freq), "country.name", "iso3c"),
+  marker = list(line = l, type = "log")
 )
 
 country.log_max_min <- seq(floor(log10(min(country.freq))), ceiling(log10(max(country.freq))), by = 1)
 
 fig <- fig %>% colorbar(
-  title = 'Amount of projects',
+  title = "Amount of projects",
   tickvals = country.log_max_min,
   ticktext = 10^country.log_max_min  # Map log values to their corresponding raw counts
 )
 
 fig <- fig %>% layout(
-  title = list(text = 'Amount of Kickstarter projects per country', yanchor = "top"),
+  title = list(text = "Amount of Kickstarter projects per country", yanchor = "top"),
   geo = g
 )
 
