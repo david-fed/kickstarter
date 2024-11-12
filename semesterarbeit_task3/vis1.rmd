@@ -1,0 +1,35 @@
+---
+title: "Visualization 1"
+output: html_document
+---
+# Vis 1
+
+```{r}
+category.relative.frequency <- table(kickstarter$Category) / length(kickstarter$Category) * 100
+
+par(mar=c(8, 6, 4, 2))
+category.barplot <- barplot(
+  sort(category.relative.frequency, decreasing = TRUE),
+  las = 2,
+  main = "Amount of Kickstarter projects by category",
+  col = "#05ce78",
+  ylim = c(0, 20),
+  border = "white"
+)
+title(xlab="Category", line=6)
+title(ylab="Relative frequency (%)", line=3)
+text(
+  x = category.barplot,
+  y = sort(category.relative.frequency, decreasing = TRUE) + 0.5,
+  labels = round(
+    sort(category.relative.frequency,
+         decreasing = TRUE
+    ),
+    1)
+)
+
+# Mean relative frequency abline
+abline(h = mean(category.relative.frequency), col = "red", lty = 2, lwd = 2)
+text(x = max(category.barplot), y = mean(category.relative.frequency), labels = paste("Mean:", round(mean(category.relative.frequency), 2)), pos = 3, col = "red")
+
+```

@@ -1,0 +1,36 @@
+---
+title: "EXPD1: Kickstarter"
+output:
+    html_notebook:
+        toc: true
+        toc_float: true
+        code_folding: "hide"
+---
+
+cat("
+<style>
+    .main-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+</style>
+")
+
+Let's check out the **Kickstarter** dataset! In case you don't know, Kickstarter is a website where people can create projects they want to crowdfund and of course where people can find projects they want to financially support. It was created in 2009 and has since been one if not the biggest place for people to get their projects crowdfunded.
+
+# The dataset
+The dataset we're gonna look at can be found [here](https://www.kaggle.com/datasets/ulrikthygepedersen/kickstarter-projects). It contains data about Kickstarter projects, specifically it has over 300'000 projects, ranging from 2009, so pretty much since the websites inception, till 2018.
+```{r}
+kickstarter <- read.csv("./kickstarter_projects.csv", encoding = "UTF-8")
+```
+
+```{r, child=c('vis1.Rmd')}
+```
+
+```{r, child=c('vis2.Rmd')}
+```
+
+```{r, child=c('vis3.Rmd')}
+```
+```{r, child=c('vis4.Rmd')}
+```
