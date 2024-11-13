@@ -5,16 +5,15 @@ output:
         toc: true
         toc_float: true
         code_folding: "hide"
+bibliography: references.bib
 ---
 
-cat("
 <style>
     .main-container {
         max-width: 1400px;
         margin: 0 auto;
     }
 </style>
-")
 
 Let's check out the **Kickstarter** dataset! In case you don't know, Kickstarter is a website where people can create projects they want to crowdfund and of course where people can find projects they want to financially support. It was created in 2009 and has since been one if not the biggest place for people to get their projects crowdfunded.
 
@@ -26,11 +25,18 @@ kickstarter <- read.csv("./kickstarter_projects.csv", encoding = "UTF-8")
 
 ```{r, child=c('vis1.Rmd')}
 ```
-
+<br>
 ```{r, child=c('vis2.Rmd')}
 ```
-
+<br>
 ```{r, child=c('vis3.Rmd')}
 ```
+<br>
 ```{r, child=c('vis4.Rmd')}
 ```
+
+
+<br><br>
+
+# References
+<div id="refs"></div>

@@ -2,8 +2,9 @@
 title: "Visualization 3"
 output: html_document
 ---
-# Vis 3
+# Visualization 3
 
+Okay now let's get more in depth! In the below plot you can see a sample of 30'000 successful or failed projects and their goal amount they wanted to raise against the actually pledged amount. Once again this is in log and also has a red line at 45 degrees, dividing the successful projects (above the line) and the failed projects (below the line). And once again it done with plotly, so you can hover over individual points to get details about a specific project:
 ```{r, message = FALSE, warning = FALSE}
 library(plotly)
 
@@ -42,3 +43,7 @@ plot_ly(data = kickstarter.filtered.sampled, x = ~Goal, y = ~Pledged,
     )
   )
 ```
+
+We used transparency for the dots, so you can nicely see how a majority of the projects are between 100 and 100k goal amounts. And if you zoom in closely you can also see how there are almost no projects directly under the line, meaning once a project is close to it's goal amount it will most likely not fail.
+<br>
+Interesting also are the outlier projects, meaning the ones who are hugging the X axes, being the ones with rather lofty goals but disappointing amount of supporters. And the opposite at the Y axes, humble projects shooting way past their 1$ goals.

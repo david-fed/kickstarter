@@ -2,8 +2,9 @@
 title: "Visualization 1"
 output: html_document
 ---
-# Vis 1
+# Visualization 1
 
+To get a feel of the dataset we'll make a simple visualization. Projects on Kickstarter are split up in categories and subcategories. So to see for what Kickstarter is used let's look at the relative amount of projects by category:
 ```{r}
 category.relative.frequency <- table(kickstarter$Category) / length(kickstarter$Category) * 100
 
@@ -30,6 +31,8 @@ text(
 
 # Mean relative frequency abline
 abline(h = mean(category.relative.frequency), col = "red", lty = 2, lwd = 2)
-text(x = max(category.barplot), y = mean(category.relative.frequency), labels = paste("Mean:", round(mean(category.relative.frequency), 2)), pos = 3, col = "red")
+text(x = max(category.barplot)-1, y = mean(category.relative.frequency), labels = paste("Mean:", round(mean(category.relative.frequency), 2)), pos = 3, col = "red")
 
 ```
+
+This isn't that surprising. Categories like "Film & Video", Music, Games & Technology are amongst the most represented in the dataset, as these are things everybody uses and likes. After Fashion we see a sharp drop in amount of projects, which make sense, as Theater, Crafts and Dance are relatively niche things.
