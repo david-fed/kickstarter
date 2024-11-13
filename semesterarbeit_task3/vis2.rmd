@@ -5,7 +5,7 @@ output: html_document
 # Visualization 2
 
 Let's get geographical for our second visualization! Let's show where projects are created with a plotly choropleth map of the world. This allows the visualization to be interactive, so don't be afraid to hover over countries and zoom in:
-```{r, message = FALSE, warning = FALSE}
+```{r, message = FALSE, warning = FALSE, tidy = 'styler'}
 library(plotly)
 library(countrycode)
 

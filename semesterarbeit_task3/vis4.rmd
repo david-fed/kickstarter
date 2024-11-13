@@ -28,7 +28,7 @@ And for our last plot we have a bit of a complex one. We calculated a "success r
 One interesting outlier is the category "Film & Video": While being around the middle in terms of success rate it has a remarkably higher mean goal than its neighbours. Our interpretation of that is that Movies or TV Shows can get very expensive, so there may be a considerable amount of outliers with high goals in that category, which would screw with the mean:
 
 <div id='first' style='visibility:visible;display:block'>
-```{r, fig.width = 10, fig.height = 6, message = FALSE, warning = FALSE}
+```{r, fig.width = 10, fig.height = 6, message = FALSE, warning = FALSE, tidy = 'styler'}
 library(dplyr)
 library(ggplot2)
 
@@ -53,7 +53,7 @@ theme(axis.text.x = element_text(angle = 45, hjust = 1)
 </div>
 
 <div id='second' style='visibility:hidden;display:none'>
-```{r, fig.width = 10, fig.height = 6, message = FALSE, warning = FALSE}
+```{r, fig.width = 10, fig.height = 6, message = FALSE, warning = FALSE, tidy = 'styler'}
 kickstarter.success.category <- kickstarter %>%
   group_by(Category) %>%
   summarize(success_rate = mean(State == "Successful", na.rm = TRUE),
@@ -74,7 +74,7 @@ theme(axis.text.x = element_text(angle = 45, hjust = 1)
 </div>
 
 But what if calculate goal with median? Press the below button to change it to median:<br>
-<input type='button' value='Change plot' onclick='showSolution();'/><br>
+<button type='button' class="btn btn-primary" onclick='showSolution();'>Change plot</button><br>
 Ah! As we can see "Film & Video" is now much more in line with its neighbours. Interestingly Technology is still the top category in terms of goal amount.
 <br><br>
 Of course to properly find out the outliers in each category one could make a boxplot, but that is an exercise left up to the reader!
