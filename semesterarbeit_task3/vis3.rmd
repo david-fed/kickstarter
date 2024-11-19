@@ -4,7 +4,7 @@ output: html_document
 ---
 # Visualization 3
 
-Okay now let's get more in depth! In the below plot you can see a sample of 30'000 successful or failed projects and their goal amount they wanted to raise against the actually pledged amount. Once again this is in log and also has a red line at 45 degrees, dividing the successful projects (above the line) and the failed projects (below the line). And once again it done with plotly, so you can hover over individual points to get details about a specific project:
+Okay now let's get more in depth! In the below plot you can see a sample of 30'000 successful or failed projects and their goal amount they wanted to raise against the actually pledged amount. Once again this is in log and also has a red line at 45 degrees, dividing the successful projects (above the line) and the failed projects (below the line). And once again it done with plotly, so you can hover over individual points to get details about a specific project (click on dots to visit the projects page):
 ```{r, message = FALSE, warning = FALSE, tidy = 'styler'}
 library(plotly)
 
@@ -12,7 +12,7 @@ set.seed(123)
 
 kickstarter.filtered <- kickstarter[kickstarter$State %in% c("Successful", "Failed"), ]
 kickstarter.filtered.sampled <- kickstarter[sample(nrow(kickstarter.filtered), 100000), ]
-kickstarter.filtered.sampled.slim <- subset(kickstarter.filtered.sampled, select = -c(ID, Country, Launched, Deadline))
+kickstarter.filtered.sampled.slim <- subset(kickstarter.filtered.sampled, select = -c(Country, Launched, Deadline))
 
 fig <- plot_ly(data = kickstarter.filtered.sampled.slim, x = ~Goal, y = ~Pledged,
         type = "scatter", mode = "markers",
@@ -26,7 +26,8 @@ fig <- plot_ly(data = kickstarter.filtered.sampled.slim, x = ~Goal, y = ~Pledged
           "<br>Goal Amount:", format(Goal, big.mark="'", trim = TRUE),
           "<br>Pledged Amount:", format(Pledged, big.mark="'", trim = TRUE)
         ),
-        hoverinfo = "text") %>%
+        hoverinfo = "text",
+        customdata = ~ID) %>%
   layout(
     title = "Goal vs Pledged Amounts",
     xaxis = list(title = "Goal Amount (Log Scale)", type = "log"),
@@ -48,6 +49,24 @@ fig <-  fig %>% toWebGL()
 
 fig
 ```
+
+
+<script>
+// Add a listener for plotly click events
+document.addEventListener('DOMContentLoaded', function() {
+  const plot = document.getElementsByClassName('plotly')[2];
+  if (plot) {
+    plot.on('plotly_click', function(data) {
+      // Get the customdata (URL) for the clicked point
+      const id = data.points[0].customdata;
+      if (id) {
+        // Open the URL in a new browser tab
+        window.open("https://www.kickstarter.com/projects/"+id+"/"+id, '_blank');
+      }
+    });
+  }
+});
+</script>
 
 We used transparency for the dots, so you can nicely see how a majority of the projects are between 100 and 100k goal amounts. And if you zoom in closely you can also see how there are almost no projects directly under the line, meaning once a project is close to it's goal amount it will most likely not fail.
 <br>
