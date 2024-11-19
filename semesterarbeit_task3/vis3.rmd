@@ -11,9 +11,10 @@ library(plotly)
 set.seed(123)
 
 kickstarter.filtered <- kickstarter[kickstarter$State %in% c("Successful", "Failed"), ]
-kickstarter.filtered.sampled <- kickstarter[sample(nrow(kickstarter.filtered), 30000), ]
+kickstarter.filtered.sampled <- kickstarter[sample(nrow(kickstarter.filtered), 100000), ]
+kickstarter.filtered.sampled.slim <- subset(kickstarter.filtered.sampled, select = -c(ID, Country, Launched, Deadline))
 
-plot_ly(data = kickstarter.filtered.sampled, x = ~Goal, y = ~Pledged,
+fig <- plot_ly(data = kickstarter.filtered.sampled.slim, x = ~Goal, y = ~Pledged,
         type = "scatter", mode = "markers",
         marker = list(color = "rgba(0, 0, 0, 0.1)", size = 6),
         text = ~paste(
@@ -35,13 +36,17 @@ plot_ly(data = kickstarter.filtered.sampled, x = ~Goal, y = ~Pledged,
     shapes = list(
       type = "line",
       x0 = 1,
-      x1 = max(kickstarter.filtered.sampled$Pledged),
+      x1 = max(kickstarter.filtered.sampled.slim$Pledged),
       y0 = 1,
-      y1 = max(kickstarter.filtered.sampled$Pledged),
+      y1 = max(kickstarter.filtered.sampled.slim$Pledged),
       line = list(dash="dash", width=2, color = "red"),
       layer = "below"
     )
   )
+
+fig <-  fig %>% toWebGL()
+
+fig
 ```
 
 We used transparency for the dots, so you can nicely see how a majority of the projects are between 100 and 100k goal amounts. And if you zoom in closely you can also see how there are almost no projects directly under the line, meaning once a project is close to it's goal amount it will most likely not fail.
