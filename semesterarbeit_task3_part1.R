@@ -1,5 +1,4 @@
-data <- kickstarter_projects
-#°data <- data[sample(nrow(data), 100000), ]
+data <- read.csv("./data/kickstarter_projects.csv", encoding = "UTF-8")
 # ----
 
 library(dplyr)
@@ -115,6 +114,22 @@ category_year_stats <- data_modified %>%
     .groups = "drop"
   )
 
+# Calculate cumulative overshoot and undershoot per category
+cumulative_stats <- category_year_stats %>%
+  group_by(Category) %>%
+  summarize(
+    total_overshoot = sum(avg_overshoot, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+# Reorder categories by cumulative overshoot (descending)
+category_order <- cumulative_stats %>%
+  arrange(desc(total_overshoot)) %>%
+  pull(Category)
+
+category_year_stats <- category_year_stats %>%
+  mutate(Category = factor(Category, levels = category_order))
+
 # Create a Plotly bar plot with a slider
 fig <- category_year_stats %>%
   plot_ly(
@@ -133,8 +148,9 @@ fig <- category_year_stats %>%
   layout(
     title = "Overshoot and Undershoot by Category Over Years",
     xaxis = list(title = "Category"),
-    yaxis = list(title = "Average Amount"),
-    barmode = "overlay"
+    yaxis = list(title = "Average Amount (Median in USD)"),
+    barmode = "overlay",
+    legend = list(x = 0.9, y = 0.95)
   )
 
 fig

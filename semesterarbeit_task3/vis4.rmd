@@ -41,7 +41,7 @@ kickstarter.success.category <- kickstarter %>%
 ggplot(kickstarter.success.category, aes(x = reorder(Category, success_rate), y = success_rate, fill = mean_goal)) +
 geom_col() +
 scale_y_continuous(labels = scales::percent) +
-scale_fill_viridis_c(name = "Mean   Goal", option = "plasma") +
+scale_fill_viridis_c(name = "Mean Goal   ", option = "plasma") +
 labs(title = "Success rate by category\nwith mean goal amount",
 x = "Category",
 y = "Success Rate") +
