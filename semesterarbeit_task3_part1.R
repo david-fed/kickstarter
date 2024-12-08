@@ -1,5 +1,4 @@
 data <- read.csv("./data/kickstarter_projects.csv", encoding = "UTF-8")
-# ----
 
 library(dplyr)
 library(ggplot2)

@@ -37,6 +37,9 @@ kickstarter <- read.csv("./kickstarter_projects.csv", encoding = "UTF-8")
 <br>
 ```{r, child=c('vis5.Rmd')}
 ```
+<br>
+```{r, child=c('vis6.Rmd')}
+```
 
 
 <br><br>
