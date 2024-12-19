@@ -68,6 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-We used transparency for the dots, so you can nicely see how a majority of the projects are between 100 and 100k goal amounts. And if you zoom in closely you can also see how there are almost no projects directly under the line, meaning once a project is close to it's goal amount it will most likely not fail.
+We used transparency for the dots, so you can nicely see how a majority of the projects are between 100 and 100k goal amounts. And if you zoom in closely you can also see how there are almost no projects directly under the line, meaning once a project is close to its goal amount it will most likely not fail.
 <br>
 Interesting also are the outlier projects, meaning the ones who are hugging the X axes, being the ones with rather lofty goals but disappointing amount of supporters. And the opposite at the Y axes, humble projects shooting way past their 1$ goals.

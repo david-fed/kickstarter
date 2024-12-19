@@ -5,6 +5,12 @@ output: html_document
 
 ### 5. "Overshoot" & "Undershoot"
 
+For our next plot we want to investigate the performance of the individual categories in more detail. To be more specific we want to give the previous plot more context so we understand the bigger picture why certain categories tend to be more successful than others.
+
+We perform this analysis by calculating the median over- / under-shoot of projects in a given category.
+- overshoot = How much money was provided "too much"
+- undershoot = How much more money would've been needed to fund the project
+
 ```{r, message = FALSE, warning = FALSE, tidy = 'styler'}
 library(lubridate)
 
@@ -93,3 +99,7 @@ fig <-  fig %>% toWebGL()
 fig
 
 ```
+
+In the interactive plot we see very well that there are great fluctuations from year to year. The over- and undershoot seem to be generally correlated. We can see this specifically well for the Technology, Games and Design categories.
+
+But there are also certain outliers that performed a lot worse over the years accoumulating a sizable undershoot sum while the overshoot sum barely grew: Food - this category looks like a tough one to promote and get funding for.

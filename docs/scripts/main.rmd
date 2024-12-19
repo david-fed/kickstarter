@@ -22,22 +22,27 @@ bibliography: ../assets/references.bib
 Let's check out the **Kickstarter** dataset! In case you don't know, Kickstarter is a website where people can create projects they want to crowdfund and of course where people can find projects they want to financially support. It was created in 2009 and has since been one if not the biggest place for people to get their projects crowdfunded.
 
 # The dataset
-The dataset we're going to look at can be found [here](https://www.kaggle.com/datasets/ulrikthygepedersen/kickstarter-projects). It contains data about Kickstarter projects, specifically it has over 300'000 projects, ranging from 2009, so pretty much since the websites inception, till 2018. Let's take a look:
+The dataset we're going to look at can be found [here](https://www.kaggle.com/datasets/ulrikthygepedersen/kickstarter-projects). It contains comprehensive data of over 300'000 Kickstarter projects, ranging from 2009, so pretty much since the websites inception, till 2018. Let's take a look:
 ```{r class.source = 'fold-show'}
 kickstarter <- read.csv("../data/kickstarter_projects.csv", encoding = "UTF-8")
 str(kickstarter)
 ```
-Each row represents one project, which means it contains exactly 374'853 projects. We have the following data about projects:
+Each row represents one project, which means it contains exactly 374'853 projects. We have the following variables in the dataset:
 
-- Project ID, which we later use to find the URL of a project page
-- Name of a project
-- Category and subcategory
-- The country in which the project is launched
-- "Launched" and "Deadline" which are the dates when a project was started and till when it has to reach it's funding goal
-- Goal: The amount of US dollars needed to successfully fund the project
-- Pledged: How much money in US dollars people have paid the project
-- Backers: How many people have / are supporting a project
-- State: The state of a project, depends on if it reaches it's goal amount
+
+| Variable name | Type                  | Description                                                           |
+|---------------|-----------------------|-----------------------------------------------------------------------|
+| ID            | numeric - discrete    | The ID of a given project                                             |
+| Name          | categorical - nominal | The name of a given project                                           |
+| Category      | categorical - nominal | The category of a given project                                       |
+| Subcategory   | categorical - nominal | The subcategory of a given project                                    |
+| Country       | categorical - nominal | The country the project was launched from                             |
+| Launched      | numeric - discrete    | The date the project was first open for funding                       |
+| Deadline      | numeric - discrete    | The date by when the project needs to reach it's funding goal         |
+| Goal          | numeric - discrete    | The amount of US dollars needed to successfully fund the project      |
+| Pledged       | numeric - discrete    | How much money in US dollars people have already commited the project |
+| Backers       | numeric - discrete    | How many people have / are supporting a project                       |
+| State         | categorical - ordinal | The state of a project, depends on if it reaches it's goal amount     |
 
 
 # Data Exploration
