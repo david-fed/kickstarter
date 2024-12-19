@@ -5,6 +5,9 @@ output: html_document
 
 ### 6. 2D Visualization of sampled Title Embeddings
 
+Our last visualization is more for fun than anything else. We used a text embedding language model to extract embeddings for 50'000 project names in our dataset, reduced the dimensions of the embedding vectors from 768 to 2 dimensions using PaCMAP and plotted them with plotly by category.
+These embeddings contain the semantic meaning behind the words of a project name.
+Goal of this visualization is if we can see some clear clusters (projects in same category near each other) from the embeddings.
 ```{python, eval = FALSE}
 import pandas as pd
 from sentence_transformers import SentenceTransformer
