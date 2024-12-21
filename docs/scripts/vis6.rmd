@@ -7,7 +7,7 @@ output: html_document
 
 Our final visualization is more for fun than for in-depth analysis. We used a text embedding language model to generate embeddings for 50,000 project names in our dataset. These embeddings capture the semantic meaning of the words in each project name. To make the data more visually accessible, we reduced the embedding vectors' dimensions from 768 to 2 using PaCMAP and plotted them by category with Plotly.
 
-The goal of this visualization is to see if clear clusters emerge—indicating that projects within the same category tend to group together based on the semantic meaning of their names.
+The goal of this visualization is to see if clear clusters emerge — indicating that projects within the same category tend to group together based on the semantic meaning of their names.
 
 ```{python, eval = FALSE}
 import pandas as pd
@@ -110,4 +110,8 @@ plot <- plot_ly(
 plot
 ```
 
-TBD
+<br><br><br><br><br>
+
+While the brown blob in the middle doesn't tell us much, we can see some interesting clusters. Like on the top right the music cluster, on the bottom left the food cluster or top left the fashion cluster. Interesting is also seeing smaller local structures, like the light-blue "peak" on the left, which consists of projects about watches.
+
+These feature embeddings are more relevant ever in our current age of Large Language Models, especially for techniques like Retrieval Augmented Generation (RAG), so getting to play with the basics was very fun & educational.
