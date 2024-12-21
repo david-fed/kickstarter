@@ -2,9 +2,11 @@
 title: "Visualization 2"
 output: html_document
 ---
-### 2. Amount of Kickstarter projects per country
 
-Let's get geographical for our second visualization! Let's show where projects are created with a plotly choropleth map of the world. This allows the visualization to be interactive, so don't be afraid to hover over countries and zoom in:
+### Amount of Kickstarter projects per country
+
+Let’s dive into geography for our second visualization! We created a Plotly choropleth map to show where projects originate worldwide. The interactive nature of this visualization allows you to hover over countries and zoom in, so feel free to explore!
+
 ```{r, message = FALSE, warning = FALSE, tidy = 'styler'}
 library(plotly)
 library(countrycode)
@@ -70,11 +72,10 @@ fig <- fig %>% layout(
 fig
 ```
 
-As you can see by the colorbar on the right we had to make the scale logarithmic, as the vast amount of projects (78%) are created in the USA. This makes sense, with Kickstarter being an american company but also with crowdfunding not being a commonly used form of funding in europe (except for the UK).
+As shown by the colorbar on the right, we used a logarithmic scale because a significant majority of projects (~78%) originate in the USA. This is understandable, given that Kickstarter is an American company and crowdfunding is less commonly used in Europe (except the UK).
 <br>
-To illustrate this we have graphic showing total amount of money raised via crowdfunding (not just on Kickstarter) by economic regions created by Bruegel, a European economics think tank [@bruegel2017]:
-<br>
-![bruegel](../assets/bruegel_amountraised.png)
-<br>
-<br>
-While comparing amounts of projects with total amount raised isn't a perfect comparison, it still shows a correlation, with the US being the largest crowdfunding market, while the other regions (except for the UK) are much smaller as of 2017. Interestingly the anomaly of the UK can also be seen in our Kickstarter dataset with a relative amount of projects for the UK being 9%, landing it in second place after the USA of course.
+To provide additional context, we included a graphic from Bruegel, a European economics think tank [@bruegel2017], showing the total amount of money raised through crowdfunding (not limited to Kickstarter) by economic regions.
+<br><br>
+![Bruegel amount raised](../assets/bruegel_amount_raised.png)
+<br><br>
+Although comparing the number of projects to the total amount raised isn’t a perfect comparison, it still highlights a correlation: the US is the largest crowdfunding market, while other regions (except the UK) remain much smaller as of 2017. Interestingly, the UK stands out as an anomaly in our Kickstarter dataset as well, with ~9% of projects originating there, placing it second after the USA.

@@ -19,16 +19,21 @@ bibliography: ../assets/references.bib
 </style>
 
 # Introduction
-Let's check out the **Kickstarter** dataset! In case you don't know, Kickstarter is a website where people can create projects they want to crowdfund and of course where people can find projects they want to financially support. It was created in 2009 and has since been one if not the biggest place for people to get their projects crowdfunded.
 
-# The dataset
-The dataset we're going to look at can be found [here](https://www.kaggle.com/datasets/ulrikthygepedersen/kickstarter-projects). It contains comprehensive data of over 300'000 Kickstarter projects, ranging from 2009, so pretty much since the websites inception, till 2018. Let's take a look:
+In this paper, we take a closer look at data from the crowdfunding platform `Kickstarter`. Launched in 2009, Kickstarter was one of the first to create a space where innovators could share their ideas and get funding from supporters all over the world. Today, it’s the top player in this growing market.
+
+We analyzed recent data to see how this new way of funding is doing and what makes a project successful in getting support from the community.
+
+# The Dataset
+
+The dataset we're going to look at can be found [here](https://www.kaggle.com/datasets/ulrikthygepedersen/kickstarter-projects). It contains comprehensive data of over 300'000 Kickstarter projects, ranging from 2009 (founding year) until 2018. Let's take a closer look:
+
 ```{r class.source = 'fold-show'}
 kickstarter <- read.csv("../data/kickstarter_projects.csv", encoding = "UTF-8")
 str(kickstarter)
 ```
-Each row represents one project, which means it contains exactly 374'853 projects. We have the following variables in the dataset:
 
+Each row represents one project, which means it contains exactly 374'853 projects with the following variables:
 
 | Variable name | Type                  | Description                                                           |
 |---------------|-----------------------|-----------------------------------------------------------------------|
@@ -44,35 +49,54 @@ Each row represents one project, which means it contains exactly 374'853 project
 | Backers       | numeric - discrete    | How many people have / are supporting a project                       |
 | State         | categorical - ordinal | The state of a project, depends on if it reaches it's goal amount     |
 
-
 # Data Exploration
 
 ## Univariate Visualizations
+
+To get a better understanding of the dataset, we created two univariate visualizations to analyze the distribution of categories and countries. These visualizations provide important context for interpreting the bi- and multivariate analyses later on.
+
+<br>
+
 ```{r, child=c('vis1.Rmd')}
 ```
+
 <br>
+
 ```{r, child=c('vis2.Rmd')}
 ```
+
 <br>
 
 ## Bi- and Multivariate Visualizations
+
+For the bi- and multivariate visualizations, we analyze various KPIs (Key Performance Indicators) to better understand what makes a Kickstarter project successful and to identify what strategies work—or no longer work.
+
+<br>
+
 ```{r, child=c('vis3.Rmd')}
 ```
+
 <br>
+
 ```{r, child=c('vis4.Rmd')}
 ```
+
 <br>
+
 ```{r, child=c('vis5.Rmd')}
 ```
+
 <br>
+
 ```{r, child=c('vis6.Rmd')}
 ```
 
 <br><br><br><br><br>
 
-# Conclusion
+# Summary
 
 <br><br>
 
 # References
+
 <div id="refs"></div>

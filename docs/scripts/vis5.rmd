@@ -3,13 +3,15 @@ title: "Visualization 5"
 output: html_document
 ---
 
-### 5. "Overshoot" & "Undershoot"
+### "Overshoot" & "Undershoot"
 
-For our next plot we want to investigate the performance of the individual categories in more detail. To be more specific we want to give the previous plot more context so we understand the bigger picture why certain categories tend to be more successful than others.
+In our next plot, we delve deeper into the performance of individual categories. Specifically, we aim to add more context to the previous plot, helping us understand the broader reasons why certain categories tend to be more successful than others.
 
-We perform this analysis by calculating the median over- / under-shoot of projects in a given category.
-- overshoot = How much money was provided "too much"
-- undershoot = How much more money would've been needed to fund the project
+To perform this analysis, we calculate the median **over- / under-shoot** for projects within each category:
+- **Overshoot:** The amount of money raised beyond the goal ("extra" funding).
+- **Undershoot:** The additional funding that would have been required to meet the goal.
+
+This approach provides a clearer picture of how categories perform relative to their funding targets, highlighting trends in over- and under-performance.
 
 ```{r, message = FALSE, warning = FALSE, tidy = 'styler'}
 library(lubridate)
@@ -100,6 +102,6 @@ fig
 
 ```
 
-In the interactive plot we see very well that there are great fluctuations from year to year. The over- and undershoot seem to be generally correlated. We can see this specifically well for the Technology, Games and Design categories.
+The interactive plot clearly reveals significant year-to-year fluctuations, with over- and undershoots generally showing a correlation. This trend is particularly evident in categories like Technology, Games, and Design.
 
-But there are also certain outliers that performed a lot worse over the years accoumulating a sizable undershoot sum while the overshoot sum barely grew: Food - this category looks like a tough one to promote and get funding for.
+However, there are notable outliers where performance has been much worse over the years. For instance, the Food category has accumulated a substantial undershoot sum, while its overshoot sum has barely grown. This suggests that Food projects are particularly challenging to promote and secure funding for.

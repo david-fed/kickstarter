@@ -3,7 +3,7 @@ title: "Visualization 4"
 output: html_document
 ---
 
-### 4. Success rate by category
+### Success rate by category
 
 <script type="text/javascript">
 function showSolution(){
@@ -23,11 +23,10 @@ function showSolution(){
 }
 </script>
 
-And for our last plot we have a bit of a complex one. We calculated a "success rate" by getting the average amount of successful projects by category and colored the bars by the mean goal of that category. We were hoping for a inverse correlation, but it's rather weak. While Technology is the lowest category with a success rate of 20% and the highest mean goal, everything else isn't as clear of a correlation.
-<br>
-One interesting outlier is the category "Film & Video": While being around the middle in terms of success rate it has a remarkably higher mean goal than its neighbours. Our interpretation of that is that Movies or TV Shows can get very expensive, so there may be a considerable amount of outliers with high goals in that category, which would screw with the mean:
+To understand what works and what doesn’t, we calculated a "success rate" by averaging the number of successful projects within each category and coloring the bars based on the mean goal for that category.
 
 <div id='first' style='visibility:visible;display:block'>
+
 ```{r, fig.width = 10, fig.height = 6, message = FALSE, warning = FALSE, tidy = 'styler'}
 library(dplyr)
 library(ggplot2)
@@ -50,9 +49,10 @@ theme(axis.text.x = element_text(angle = 45, hjust = 1)
 )
 
 ```
-</div>
 
+</div>
 <div id='second' style='visibility:hidden;display:none'>
+
 ```{r, fig.width = 10, fig.height = 6, message = FALSE, warning = FALSE, tidy = 'styler'}
 kickstarter.success.category <- kickstarter %>%
   group_by(Category) %>%
@@ -71,11 +71,15 @@ theme_minimal(base_size = 18) +
 theme(axis.text.x = element_text(angle = 45, hjust = 1)
 )
 ```
+
 </div>
 
-But what if calculate goal with median? Press the below button to change it to median:<br>
-<button type='button' class="btn btn-primary" onclick='showSolution();'>Change plot</button><br>
-Ah! As we can see "Film & Video" is now much more in line with its neighbours. Interestingly Technology is still the top category in terms of goal amount.
-<br><br>
-Of course to properly find out the outliers in each category one could make a boxplot, but that is an exercise left up to the reader!
+We anticipated an inverse correlation, where higher goals would correspond to lower success rates, but the correlation turned out to be weak. For instance, while Technology has the lowest success rate at 20% and the highest mean goal, other categories don’t follow as clear a pattern.
 
+An interesting outlier is the category "Film & Video". While its success rate is roughly average, it has a noticeably higher mean goal compared to neighboring categories. We interpret this as a reflection of the high costs often associated with producing movies or TV shows. This likely results in a significant number of outliers with exceptionally high goals, which skew the mean upward.
+
+But what if we calculate goal with median? Press the button to change it to the median: <button type='button' class="btn btn-primary" onclick='showSolution();'>Change plot</button>
+
+Ah! As we can see "Film & Video" is now much more in line with its neighbours. Interestingly Technology is still the top category in terms of goal amount.
+
+Of course to properly find out the outliers in each category one could make a boxplot, but that is left as an exercise to the reader!

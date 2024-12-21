@@ -2,9 +2,11 @@
 title: "Visualization 3"
 output: html_document
 ---
-### 3. Goal vs Pledged Amounts
 
-Okay now let's get more in depth! In the below plot you can see a sample of 30'000 successful or failed projects and their goal amount they wanted to raise against the actually pledged amount. Once again this is in log and also has a red line at 45 degrees, dividing the successful projects (above the line) and the failed projects (below the line). And once again it's done with plotly, so you can hover over individual points to get details about a specific project (click on dots to visit the projects page):
+### Goal vs Pledged Amounts
+
+Now, let’s dive deeper! The plot below displays a sample of 30,000 successful and failed projects, comparing their goal amounts with the actual pledged amounts. Both axes are on a logarithmic scale, and a 45-degree red line separates successful projects (above the line) from failed ones (below the line). As with our previous visualization, this is created with Plotly, so you can hover over individual points to see details about specific projects—or click on the dots to visit the project pages directly!
+
 ```{r, message = FALSE, warning = FALSE, tidy = 'styler'}
 library(plotly)
 
@@ -50,7 +52,6 @@ fig <-  fig %>% toWebGL()
 fig
 ```
 
-
 <script>
 // Add a listener for plotly click events
 document.addEventListener('DOMContentLoaded', function() {
@@ -68,6 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-We used transparency for the dots, so you can nicely see how a majority of the projects are between 100 and 100k goal amounts. And if you zoom in closely you can also see how there are almost no projects directly under the line, meaning once a project is close to its goal amount it will most likely not fail.
-<br>
-Interesting also are the outlier projects, meaning the ones who are hugging the X axes, being the ones with rather lofty goals but disappointing amount of supporters. And the opposite at the Y axes, humble projects shooting way past their 1$ goals.
+We applied transparency to the dots, making it easy to see that the majority of projects have goal amounts between $100 and $100k. If you zoom in, you'll notice that there are almost no projects directly below the red line. This suggests that once a project comes close to reaching its goal amount, it is very likely to succeed.
+
+The outlier projects are also quite interesting. Those clustered near the X-axis represent ambitious projects with lofty goals but disappointing support. Conversely, the ones near the Y-axis showcase modest projects with humble $1 goals that ended up wildly surpassing their expectations.
