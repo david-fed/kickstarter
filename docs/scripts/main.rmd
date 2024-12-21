@@ -95,7 +95,15 @@ For the bi- and multivariate visualizations, we analyze various KPIs (Key Perfor
 
 # Summary
 
-<br><br>
+We explored Kickstarter data to understand what drives project success, uncovering some interesting trends along the way. First, we looked at univariate distributions for categories and countries, finding that the US dominates with 78% of projects, while the UK is a notable outlier with 9%. Categories like Film & Video, Music, and Technology are highly represented, but niche ones like Dance and Crafts trail behind.
+
+Next, we analyzed KPIs like success rates and funding goals. While we expected an inverse correlation between high goals and success, the relationship was weak. For instance, Technology had the lowest success rate (20%) and the highest mean goal, but other categories didn’t follow the same pattern. Film & Video stood out with an average success rate but unusually high goals, likely skewed by outliers.
+
+Year-to-year performance trends showed clear fluctuations, with over- and undershoot sums often correlated. Categories like Technology, Games, and Design followed this trend, while Food consistently struggled, accumulating a significant undershoot without matching overshoots.
+
+For a creative twist, we analyzed 50,000 project names using a text embedding language model. By reducing the 768-dimensional embeddings to 2D with PaCMAP and plotting by category, we visualized semantic clusters of project names. This revealed interesting patterns, suggesting that projects within the same category often share thematic similarities in their naming.
+
+Overall, the analysis shed light on what makes a project succeed—or fail—while also highlighting outliers and intriguing naming trends. It’s been a fascinating journey exploring the dynamics of Kickstarter’s unique crowdfunding ecosystem.
 
 # References
 
